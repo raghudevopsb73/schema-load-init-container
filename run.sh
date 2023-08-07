@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 while true ; do
   if [ -f /data/params ]; then
     echo "### Parameters"
