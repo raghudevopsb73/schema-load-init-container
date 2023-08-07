@@ -5,7 +5,14 @@ cd /app
 git clone https://github.com/raghudevopsb73/${COMPONENT}
 cd ${COMPONENT}/schema
 
-source /data/params
+while true ; do
+  if [ -f /data/params ]; then
+    source /data/params
+    break
+  else
+    sleep 5
+  fi
+done
 
 if [ "${SCHEMA_TYPE}" == "mongo" ]; then
   curl -s -L https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -O /app/rds-combined-ca-bundle.pem
