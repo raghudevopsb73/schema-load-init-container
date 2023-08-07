@@ -2,6 +2,7 @@
 
 while true ; do
   if [ -f /data/params ]; then
+    cat /data/params
     source /data/params
     break
   else
