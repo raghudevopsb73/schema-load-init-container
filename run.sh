@@ -1,18 +1,19 @@
 #!/bin/bash
 
-mkdir /app
-cd /app
-git clone https://github.com/raghudevopsb73/${COMPONENT}
-cd ${COMPONENT}/schema
-
 while true ; do
   if [ -f /data/params ]; then
     source /data/params
     break
   else
+    echo $(date) - Waiting for Parameters
     sleep 5
   fi
 done
+
+mkdir /app
+cd /app
+git clone https://github.com/raghudevopsb73/${COMPONENT}
+cd ${COMPONENT}/schema
 
 if [ "${SCHEMA_TYPE}" == "mongo" ]; then
   curl -s -L https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -O /app/rds-combined-ca-bundle.pem
