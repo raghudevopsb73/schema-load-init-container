@@ -2,6 +2,7 @@
 
 while true ; do
   if [ -f /data/params ]; then
+    echo "### Parameters"
     cat /data/params
     source /data/params
     break
